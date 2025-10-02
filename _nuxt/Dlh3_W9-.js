@@ -1,0 +1,1 @@
+import{c1 as o,d as u,q as c,c2 as n,c3 as i}from"./Sm2mCfDE.js";const f=o(async()=>{var a;let e,t;const{authReady:s}=u(),r=c();if([e,t]=n(()=>s),await e,t(),!((a=r.userInfo)!=null&&a.email))return i("/")});export{f as default};

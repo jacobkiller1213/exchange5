@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /api.hi.exchange
+Disallow: /storage.hi.exchange
+Disallow: /paypal-invoice
+Disallow: /visa-master-invoice
+Disallow: /payment/fail
+Disallow: /payment/success
+Allow: /

@@ -1,0 +1,68 @@
+# Включаем модуль перезаписи URL
+RewriteEngine On
+
+# Базовый URL (если приложение находится в подкаталоге)
+ RewriteBase /
+
+
+# Обработка multicall запросов
+RewriteRule ^api/v1/calculation/directions/?$ /api/directions.php?action=directions [L]
+RewriteRule ^api/v1/calculation/?$ /api/calculation.php [L]
+RewriteRule ^api/v1/calculation/step1/?$ /api/steps.php?step=1 [L]
+RewriteRule ^api/v1/calculation/step2/?$ /api/steps.php?step=2 [L]
+RewriteRule ^api/v1/calculation/step3/?$ /api/steps.php?step=3 [L]
+RewriteRule ^api/v1/calculation/track-order/?$ /api/track-order.php [L]
+RewriteRule ^order/([0-9]+)/?$ /api/order.php?orderId=$1 [L]
+
+RewriteRule ^terms-of-services?$ /Ru/terms-of-services.html [L]
+RewriteRule ^privacy-policy?$ /Ru/privacy-policy.html [L]
+RewriteRule ^privacy-Policy?$ /Ru/privacy-policy.html [L]
+RewriteRule ^contact-us?$ /Ru/contact-us.html [L]
+RewriteRule ^faq?$ /Ru/faq.html [L]
+RewriteRule ^Ru/?$ /Ru/index.html [L]
+
+RewriteRule ^Ru/terms-of-services?$ /Ru/terms-of-services.html [L]
+RewriteRule ^Ru/privacy-policy?$ /Ru/privacy-policy.html [L]
+RewriteRule ^Ru/contact-us?$ /Ru/contact-us.html [L]
+RewriteRule ^Ru/faq?$ /Ru/faq.html [L]
+
+
+# Разрешаем доступ к реальным файлам и директориям
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Разрешаем доступ к JS, CSS, изображениям и другим статическим файлам
+RewriteCond %{REQUEST_URI} !\.(?:css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot|map)$ [NC]
+
+# Перенаправляем все остальные запросы на index.html
+RewriteRule ^ index.html [L]
+
+
+# Устанавливаем правильные типы MIME
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+</IfModule>
+
+# Устанавливаем заголовки кэширования для статических ресурсов
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # Изображения
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+
+  # CSS, JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+
+  # Шрифты
+  ExpiresByType application/font-woff "access plus 1 year"
+  ExpiresByType application/font-woff2 "access plus 1 year"
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
+  ExpiresByType application/x-font-ttf "access plus 1 year"
+  ExpiresByType font/opentype "access plus 1 year"
+</IfModule>

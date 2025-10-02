@@ -1,0 +1,1 @@
+const n=e=>{const t=e.getBoundingClientRect();return t.top>=-400&&t.left>=0&&t.bottom<=(window.innerHeight+1200||document.documentElement.clientHeight)&&t.right<=(window.innerWidth||document.documentElement.clientWidth)};export{n as i};

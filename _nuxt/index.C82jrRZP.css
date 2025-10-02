@@ -1,0 +1,40 @@
+@keyframes blink-6b5e2595 {
+  0%,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #fff;
+  }
+}
+.placeholder.blinking[data-v-6b5e2595] {
+  animation: blink-6b5e2595 1s step-end infinite;
+}
+#exchangeBox {
+  scroll-margin-top: 300px;
+}
+.hero {
+  background: radial-gradient(68.19% 68.15% at 50% 0, #0347a8 0, #000);
+}
+
+
+@media (max-width: 768px) {
+  .max-md\:flex-wrap {
+    flex-wrap: wrap;
+  }
+  .max-md\:flex-col {
+    flex-direction: column;
+  }
+  .max-md\:justify-center {
+    justify-content: center;
+  }
+  .max-md\:gap-2 {
+    gap: 10px;
+  }
+  .max-md\:grid {
+    display: grid;
+  }
+  .max-md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
